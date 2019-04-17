@@ -1,2 +1,10 @@
-add_executable(random_test random_test.cpp)
-add_test(random random_test)
+find_package(GSL REQUIRED)
+include_directories(${GSL_INCLUDE_DIRS})
+set(LIBS ${LIBS} ${GSL_LIBRARIES})
+
+include_directories(catch2)
+add_executable(test_kiss test_kiss.cpp)
+add_executable(test_rng test_rng.cpp)
+target_link_libraries(test_rng ${LIBS})
+add_test(kiss test_kiss)
+add_test(rng test_rng)

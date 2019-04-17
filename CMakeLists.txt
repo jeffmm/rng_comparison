@@ -19,11 +19,13 @@ add_subdirectory("src")
 
 # Reset binary output directory to default
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY)
-
-# Add catch
-include_directories(lib/Catch2/single_include/catch2)
+#add_subdirectory(extern/Catch2)
 
 # Configure tests
 enable_testing()
+#add_executable(test_all test_main.cpp)
+#target_link_libraries(test_all Catch2::Catch2)
 add_subdirectory(tests)
-
+#include(CTest)
+#include(Catch)
+#catch_discover_tests(test_all)
