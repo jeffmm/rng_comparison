@@ -6,6 +6,8 @@ Long story short, both generators properly returned pseudo-random numbers that p
 
 ## Compiling
 
+Requirements are cmake, a C++11 compiler, and the GSL library installed somewhere where cmake can find it (like */usr/local/lib*, etc).
+
 To compile using cmake, do the usual 
 
 ```
@@ -15,9 +17,11 @@ cmake ..
 make
 ```
 
-This will require a C++11 compiler and the GSL library installed somewhere where cmake can find it (like /usr/local/lib, etc).
+## Documentation
+
+By default, documentation will be built into the *build/documentation* folder in both html and latex using Doxygen (if it is available).
 
 ## Testing
 
-Running `ctest` or `make test` will run all unit tests (written using the header-only catch2 library) for each binary. If either of the tests fail, the unit test binaries themselves should be run with `./tests/test_<rng_name>` to see which unit test failed.
+To run unit tests, navigate to a fresh *build* folder and build the binaries in debug mode with `cmake -DCMAKE_BUILD_TYPE=Debug ..`, and the unit test binaries will build as well. Running `ctest` or `make test` will run all unit test binaries and report any failures. If any of the tests fail, the offending unit test binary should be run with `./tests/test_<rng_name>` to see which exact unit test failed, using the header-only Catch2 library.
 

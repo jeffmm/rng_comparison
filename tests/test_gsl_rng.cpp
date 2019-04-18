@@ -1,11 +1,11 @@
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
 
-#include "../src/rng/rng.h"
+#include "../src/gsl_rng/gsl_rng.h"
 
 
 TEST_CASE("GSL RNG functions") {
-  RNG rng;
+  GSLRNG rng;
   rng.Init(rand());
   SECTION("Random number ranges are defined") {
     REQUIRE(rng.RandomUniform() < 1);

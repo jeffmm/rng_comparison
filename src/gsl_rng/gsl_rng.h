@@ -6,7 +6,10 @@
 #include <math.h>
 #include <iostream>
 
-class RNG { 
+/** Random number generator class using GSL libraries. Memory allocation and
+ * cleanup functions are handled by the class.
+  */
+class GSLRNG { 
   private:
     const gsl_rng_type *T;
     void Clear() {
@@ -14,28 +17,35 @@ class RNG {
     }
     gsl_rng *r;
   public:
-    RNG() {}
-    RNG(long seed) {
+    GSLRNG() {}
+    /** Instantiation of RNG with a default seed value. Calls Init(seed).
+    */
+    GSLRNG(long seed) {
       Init(seed);
     }
-    ~RNG() {
+    ~GSLRNG() {
       Clear();
     }
+    /** Initialize the RNG with a default seed. Accepts a long for the seed.
+      */
     void Init(long seed) {
       gsl_rng_env_setup();
       T = gsl_rng_default;
       r = gsl_rng_alloc(T);
       gsl_rng_set(r, seed);
     }
-    RNG(const RNG& that) {
+    GSLRNG(const GSLRNG& that) {
       this->Init(gsl_rng_get(that.r));
     }
-    RNG& operator=(RNG const&that) {
+    GSLRNG& operator=(GSLRNG const&that) {
       this->Init(gsl_rng_get(that.r));
       return *this;
     }
+    /** Returns a random uniform in the range [0,1). Uses the GSL function
+     * gsl_rng_uniform on the generator.
+      */
     double RandomUniform() {
-      return gsl_rng_uniform_pos(r);
+      return gsl_rng_uniform(r);
     }
 };
 

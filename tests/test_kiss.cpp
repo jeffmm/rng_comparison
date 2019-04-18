@@ -8,7 +8,7 @@
 
 
 TEST_CASE("KISS RNG functions") {
-  RNG rng;
+  KISSRNG rng;
   rng.Init(rand(), rand(), rand(), rand());
   double vec[3] = {0,0,0};
   SECTION("Random number ranges are defined") {
