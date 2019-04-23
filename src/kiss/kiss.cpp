@@ -1,4 +1,4 @@
-#define N_RAND 100000
+#define N_RAND 1000000000
 #include "kiss.h"
 
 /** This program generates N_RAND random uniform numbers using the KISS RNG.
@@ -26,11 +26,12 @@ int main(int argc, char * argv[]) {
 
   double k = 0;
   
-  for (int i=0; i<N_RAND; ++i) {
+  for (long i=0; i<N_RAND; ++i) {
     k = rng.RandomUniform();
+    k+=1;
     // For generating the numbers to file. Ruins time benchmarks.
     //std::cout << k <<"\n"; 
   }
-
+  printf("%2.2f\n",k);
   return 0;
 }

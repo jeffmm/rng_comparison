@@ -8,6 +8,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 
+#set(GCC_COVERAGE_COMPILE_FLAGS "-Wunused-value -Wreturn-type")
+#set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
+
 # Don't build unit tests by default
 option(DO_TESTS "Build unit tests" OFF)
 

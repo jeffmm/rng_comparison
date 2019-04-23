@@ -1,4 +1,4 @@
-#define N_RAND 100000000
+#define N_RAND 1000000000
 #include "gsl_rng.h"
 
 /** This program generates N_RAND random uniform numbers using the GSL RNG.
@@ -28,6 +28,8 @@ int main(int argc, char * argv[]) {
     // For generating the numbers to file. Ruins time benchmarks.
     //std::cout << k <<"\n";
   }
+  // Keep the compiler from skipping the loop
+  std::cout << k << "\n";
 
   return 0;
 }
